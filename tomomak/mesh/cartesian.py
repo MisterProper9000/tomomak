@@ -254,5 +254,8 @@ class Axis1d(abstract_axes.Abstract1dAxis):
         return plot, ax
 
     def plot3d(self, data, axis2, axis3, data_type='solution', *args, **kwargs):
-        raise Exception("Not implemented")
+        if type(axis2) is not Axis1d or type(axis3) is not Axis1d:
+            raise NotImplementedError("3D plots with such combination of axes are not supported.")
+
+        raise NotImplementedError("Not implemented")
         return 0
