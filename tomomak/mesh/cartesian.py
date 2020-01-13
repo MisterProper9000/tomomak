@@ -1,7 +1,7 @@
 from . import abstract_axes
 import numpy as np
 import matplotlib.pyplot as plt
-from tomomak.plots import plot1d, plot2d
+from tomomak.plots import plot1d, plot2d, plot3d
 import warnings
 import tomomak.util.text
 
@@ -257,5 +257,8 @@ class Axis1d(abstract_axes.Abstract1dAxis):
         if type(axis2) is not Axis1d or type(axis3) is not Axis1d:
             raise NotImplementedError("3D plots with such combination of axes are not supported.")
 
-        raise NotImplementedError("Not implemented")
+        title = 'Detector 1/{}'.format(data.shape[0])
+
+        plot3d.detector_colormesh3d(data, self, axis2, axis3, title,
+                                                      *args, **kwargs)
         return 0
